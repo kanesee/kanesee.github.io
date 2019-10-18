@@ -1,1 +1,69 @@
-hello world
+<!doctype html>
+<html lang="en" ng-app="app">
+<head>
+  <link rel="stylesheet" type="text/css"
+        href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css">
+  
+  <link rel="stylesheet" type="text/css"
+        href="assets/css/shared.css">
+
+  <!-- #### JS #### -->
+  <script
+    src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js">
+  </script>
+  <script
+    src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js">
+  </script>
+
+  <script src="assets/js-3rd/angular-1.3.15.min.js"></script>
+
+  <!-- angularjs app modules -->
+  <script src="assets/js/app.js"></script>
+  <script src="indexController.js"></script>
+
+
+</head>
+<body ng-controller="mainCtrl">
+
+  <h1><center>Sample App<center></h1>
+
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <center>My Todos</center>
+      </div>
+    </div>
+    <ul class="list-group">
+      <li class="list-group-item"
+          ng-repeat="todo in todos track by $index">
+        {{todo}}
+        <a href=""
+           ng-click="remove($index)"
+           >remove</a>
+      </li>
+    </ul>
+    <div class="row">
+      <div class="col">
+        <div class="input-group mb-3">
+          <input type="text"
+                 class="form-control"
+                 placeholder="Enter new Todo item"
+                 aria-label="Enter new Todo item"
+                 aria-describedby="button-addon2"
+                 ng-model="todo"
+                 ng-keydown="$event.keyCode === 13 && add(todo)">
+          <div class="input-group-append">
+            <button class="btn btn-outline-secondary"
+                    type="button"
+                    id="button-addon2"
+                    ng-click="add(todo)">Add</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>
